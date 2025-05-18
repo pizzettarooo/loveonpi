@@ -7,6 +7,9 @@
   <link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
   <style>
+    html {
+      scroll-behavior: smooth;
+    }
     body {
       margin: 0;
       font-family: Arial, sans-serif;
@@ -50,6 +53,7 @@
       margin: 10px auto;
       display: block;
       animation: float 3s ease-in-out infinite;
+      cursor: pointer;
     }
     .value {
       font-size: 2em;
@@ -162,13 +166,24 @@
   </style>
 </head>
 <body>
+  <a name="top"></a>
   <header id="main-title">Love on Pi</header>
-  <img src="mondo.png" alt="Mondo con bandiera italiana" class="world-image">
+  <a href="#about"><img src="mondo.png" alt="Mondo con bandiera italiana" class="world-image"></a>
   <div class="value">1 Pi = <span id="pi-value">Caricamento...</span></div>
 
+  <a href="#shipping">
+  <a href="#shipping">
   <div class="delivery-section">
     <img class="delivery-img" src="delivery-van.png" alt="5-10 giorni di consegna">
   </div>
+</a>
+<a href="#payment">
+  <img src="cc.png" alt="Carta di credito" class="world-image">
+</a>
+<a href="#legal">
+  <img src="legal.png" alt="Legalità e sicurezza" style="max-width: 200px; width: 100%; margin: 10px auto; display: block; animation: pulseValue 3s ease-in-out infinite; cursor: pointer;">
+</a>
+</a>
 
   <div class="contact">INFO</div>
   <div class="social-icons">
@@ -247,10 +262,79 @@
       <h3>Code: Ts 02</h3>
       <p><span class="eur-amount">18 €</span> (<span class="pi-price">...</span>)</p>
     </div>
-    <!-- Aggiungi altri prodotti qui -->
+</div>
+
+  <a name="about"></a>
+  <div id="about" style="padding: 50px 20px; max-width: 800px; margin: 50px auto; background-color: rgba(0, 0, 0, 0.5); border-radius: 10px; color: #fff;">
+    <h2 style="font-family: 'Luckiest Guy', cursive; color: #f0c420;">Chi Sono</h2>
+    <p style="line-height: 1.6;">
+      Ciao! Mi chiamo Andrea, ho 35 anni e sono un appassionato di criptovalute. <br>
+      Sono rimasto affascinato dalla visione di Pi Network: un ecosistema accessibile, trasparente e rivolto a tutti.<br>
+      Con questo progetto voglio dare la possibilità a chiunque di acquistare gadget personalizzati a prezzi accessibili pagando in Pi Coin.
+    </p>
+    <h2 style="font-family: 'Luckiest Guy', cursive; color: #f0c420; margin-top: 40px;">About Me</h2>
+    <p style="line-height: 1.6;">
+      Hi! My name is Andrea, I’m 35 and I’m passionate about crypto.<br>
+      I was fascinated by the way Pi Network aims to build a fair and transparent ecosystem.<br>
+      Through this project, I want to offer everyone the chance to buy cool gadgets at fair prices — using their Pi Coins!
+    </p>
   </div>
 
-  <script>
+  <a name="shipping"></a>
+  <div id="shipping" style="padding: 50px 20px; max-width: 800px; margin: 50px auto; background-color: rgba(0, 0, 0, 0.5); border-radius: 10px; color: #fff;">
+    <h2 style="font-family: 'Luckiest Guy', cursive; color: #f0c420;">Spedizioni</h2>
+    <p style="line-height: 1.6;">
+      Generalmente gli ordini verranno consegnati entro 5-10 giorni lavorativi in Italia. Effettuiamo spedizioni in tutto il mondo, e le spese di spedizione possono variare a seconda del Paese di destinazione.<br>
+      Love on Pi non gestisce direttamente i gadget ma si avvale di un'azienda partner per evadere ogni ordine nel più breve tempo possibile.<br>
+      Una volta effettuato l'ordine, riceverai entro poche ore il numero di Tracking per monitorare la spedizione.<br>
+      Per maggiori informazioni o per effettuare un ordine, contattaci su Telegram, Instagram o WhatsApp!
+    </p>
+    <h2 style="font-family: 'Luckiest Guy', cursive; color: #f0c420; margin-top: 40px;">Shipping Info</h2>
+    <p style="line-height: 1.6;">
+      Orders within Italy are usually delivered within 5-10 business days. We ship worldwide and shipping costs may vary depending on your country.<br>
+      Love on Pi does not personally hold any inventory — all items are fulfilled through a trusted partner to ensure quick processing.<br>
+      After placing an order, a tracking number will be provided within a few hours so you can follow your shipment.<br>
+      For more info or to order, get in touch via Telegram, Instagram, or WhatsApp!
+    </p>
+  </div>
+
+  <a name="payment"></a>
+  <div id="payment" style="padding: 50px 20px; max-width: 800px; margin: 50px auto; background-color: rgba(0, 0, 0, 0.5); border-radius: 10px; color: #fff;">
+    <h2 style="font-family: 'Luckiest Guy', cursive; color: #f0c420;">Metodo di Pagamento</h2>
+    <p style="line-height: 1.6;">
+      Il metodo di pagamento accettato su Love on Pi è il Pi Coin.<br>
+      Per effettuare ordini, completare i pagamenti o ricevere maggiori informazioni sui nostri prodotti, sentiti libero di contattarci tramite Telegram, Instagram o WhatsApp.<br>
+      Siamo sempre disponibili, 24 ore su 24, 7 giorni su 7!
+    </p>
+    <h2 style="font-family: 'Luckiest Guy', cursive; color: #f0c420; margin-top: 40px;">Payment Method</h2>
+    <p style="line-height: 1.6;">
+      The accepted payment method on Love on Pi is Pi Coin.<br>
+      To place orders, make payments, or get more information about our products, feel free to reach out to us via Telegram, Instagram, or WhatsApp.<br>
+      We're always available — 24/7!
+    </p>
+  </div>
+
+  <a name="legal"></a>
+  <div id="legal" style="padding: 50px 20px; max-width: 800px; margin: 50px auto; background-color: rgba(0, 0, 0, 0.5); border-radius: 10px; color: #fff;">
+    <h2 style="font-family: 'Luckiest Guy', cursive; color: #f0c420;">Note Legali</h2>
+    <p style="line-height: 1.6;">
+      Love on Pi non è un’azienda registrata ma un progetto amatoriale per appassionati della rete Pi Network.<br>
+      Tutti i prodotti vengono spediti tramite fornitori terzi affidabili, nel rispetto della privacy e delle normative internazionali.<br>
+      I pagamenti in Pi Coin sono da considerarsi tra privati, senza fini di lucro.
+    </p>
+    <h2 style="font-family: 'Luckiest Guy', cursive; color: #f0c420; margin-top: 40px;">Legal Notice</h2>
+    <p style="line-height: 1.6;">
+      Love on Pi is not a registered company, but a fan-driven project dedicated to Pi Network enthusiasts.<br>
+      All products are fulfilled via trusted third-party services, respecting international privacy and shipping regulations.<br>
+      Pi Coin payments are peer-to-peer and non-commercial in nature.
+    </p>
+  </div>
+
+  <a href="#top">
+    <img src="up-arrow.png" alt="Torna su" class="world-image">
+  </a>
+
+<script>
     function updateProductPrices(piToEur) {
       const products = document.querySelectorAll('.product');
       products.forEach(product => {
