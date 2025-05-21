@@ -1,398 +1,260 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Love on Pi</title>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-DXLJ8XHPTR"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-DXLJ8XHPTR');
-  </script>
-  <style>
-    html {
-      scroll-behavior: smooth;
-    }
-    body {
-      margin: 0;
-      font-family: 'Orbitron', sans-serif;
-      background: radial-gradient(ellipse at center, #000010 0%, #000 100%);
-      color: #00f7ff;
-      text-align: center;
-    }
-    .logo {
-      max-width: 180px;
-      margin: 20px auto 10px;
-      display: block;
-    }
-    @keyframes neonPulse {
-      0%, 100% {
-        text-shadow: 0 0 10px #00f7ff, 0 0 20px #6e00ff;
-      }
-      50% {
-        text-shadow: 0 0 20px #00f7ff, 0 0 40px #6e00ff;
-      }
-    }
-    .button-grid {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 20px;
-      margin: 30px auto;
-    }
-    .button-grid .row {
-      display: flex;
-      justify-content: center;
-      gap: 30px;
-    }
-    .button-img {
-      max-width: 200px;
-      width: 100%;
-      animation: float 3s ease-in-out infinite;
-      cursor: pointer;
-    }
-    @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-10px); }
-    }
-    .value {
-      font-size: 2em;
-      margin-bottom: 20px;
-      color: #f0c420;
-      text-shadow: 0 0 5px #00f7ff, 0 0 15px #00f7ff;
-      animation: glow 2s ease-in-out infinite alternate;
-    }
-    @keyframes glow {
-      from {
-        text-shadow: 0 0 5px #00f7ff, 0 0 10px #6e00ff;
-      }
-      to {
-        text-shadow: 0 0 15px #6e00ff, 0 0 30px #00f7ff;
-      }
-    }
-    .contact {
-      margin: 40px auto 10px;
-      font-size: 2.2em;
-      color: #00f7ff;
-      font-weight: bold;
-    }
-    .social-icons {
-      display: flex;
-      justify-content: center;
-      gap: 60px;
-      margin-bottom: 30px;
-    }
-    .social-icons a {
-      color: #00f7ff;
-      font-size: 2.5em;
-      transition: transform 0.3s ease, color 0.3s ease;
-      text-decoration: none;
-    }
-    .social-icons a:hover {
-      transform: scale(1.2);
-      color: #6e00ff;
-    }
-    .social-icons span {
-      display: block;
-      font-size: 0.6em;
-      margin-top: 5px;
-    }
-    .gallery {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 20px;
-      padding: 30px;
-    }
-    .product {
-      background-color: #111;
-      border: 1px solid #00f7ff;
-      border-radius: 10px;
-      padding: 20px;
-      width: 250px;
-      color: #00f7ff;
-      box-shadow: 0 0 15px #00f7ff33;
-    }
-    .product img {
-      width: 100%;
-      border-radius: 10px;
-    }
-    .product h3, .product p {
-      margin: 10px 0;
-    }
-    .buy-btn {
-      background-color: #00f7ff;
-      color: #000;
-      padding: 10px 20px;
-      border: none;
-      border-radius: 5px;
-      font-weight: bold;
-      cursor: pointer;
-    }
-    .info-section {
-      background-color: rgba(0,0,20,0.7);
-      border: 1px solid #00f7ff;
-      border-radius: 10px;
-      padding: 50px 20px;
-      margin: 50px auto;
-      max-width: 800px;
-      color: #fff;
-    }
-    .info-section h2 {
-      color: #00f7ff;
-    }
-  </style>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <a name="top"></a>
-  <img src="lg.png" alt="Logo" class="logo">
-
-  <div class="button-grid">
-    <div class="row">
-      <a href="#about"><img src="mondo.png" alt="Mondo con bandiera italiana" class="button-img"></a>
-      <a href="#shipping"><img src="delivery-van.png" alt="5-10 giorni di consegna" class="button-img"></a>
-    </div>
-    <div class="value">1 Pi = <span id="pi-value">Caricamento...</span></div>
-    <div class="row">
-      <a href="#payment"><img src="cc.png" alt="Carta di credito" class="button-img"></a>
-      <a href="#legal"><img src="legal.png" alt="Legalità e sicurezza" class="button-img"></a>
-    </div>
+  <div class="logo-container">
+    <img src="img/logo.png" alt="Love on Pi logo" class="logo" />
   </div>
-
-  <div class="contact">INFO</div>
-<div class="social-grid">
-  <div class="social-row">
-    <a href="https://t.me/theanimal89" target="_blank" title="Telegram">
-      <i class="fab fa-telegram"></i>
-      <span>Telegram</span>
-    </a>
-    <a href="https://instagram.com/love_on_pi" target="_blank" title="Instagram">
-      <i class="fab fa-instagram"></i>
-      <span>Instagram</span>
-    </a>
-  </div>
-  <div class="social-row">
-    <a href="https://wa.me/393318524149" target="_blank" title="WhatsApp">
-      <i class="fab fa-whatsapp"></i>
-      <span>WhatsApp</span>
-    </a>
-    <a href="mailto:megadruido@gmail.com" target="_blank" title="Email">
-      <i class="fas fa-envelope"></i>
-      <span>Email</span>
-    </a>
-  </div>
+  <div class="pi-value-container">
+  <span class="label">1π =</span>
+  <span id="piValue" class="pi-glow">...</span>
 </div>
-<style>
-  .social-grid {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
-    margin-bottom: 30px;
-  }
-  .social-row {
-    display: flex;
-    justify-content: center;
-    gap: 60px;
-  }
-  .social-row a {
-    color: #00f7ff;
-    font-size: 2.5em;
-    transition: transform 0.3s ease, color 0.3s ease;
-    text-decoration: none;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    font-family: 'Orbitron', sans-serif;
-  }
-  .social-row a:hover {
-    transform: scale(1.2);
-    color: #6e00ff;
-  }
-  .social-row span {
-    font-size: 0.6em;
-    margin-top: 5px;
-  }
-</style>
+  <div class="social-buttons">
+    <a href="https://wa.me/393318524149" target="_blank">
+      <img src="img/whatsapp.png" alt="WhatsApp" class="button-img" />
+    </a>
+    <a href="mailto:support@loveonpi.com">
+      <img src="img/email.png" alt="Email" class="button-img" />
+    </a>
+  </div>
 
-
-  <div class="gallery">
-    <div class="product" data-eur="9">
-      <img src="st1.png" alt="Prodotto 1">
-      <h3>Code: Stickers 01</h3>
-      <p><span class="eur-amount">9 €</span> (<span class="pi-price">...</span>)</p>
-    </div>
-    <div class="product" data-eur="18">
-      <img src="mp1.png" alt="Prodotto 1">
-      <h3>Code: Mouse Pad 01</h3>
-      <p><span class="eur-amount">18 €</span> (<span class="pi-price">...</span>)</p>
-    </div>
-    <div class="product" data-eur="10">
-      <img src="st2.png" alt="Prodotto 1">
-      <h3>Code: Stickers QR</h3>
-      <p><span class="eur-amount">10 €</span> (<span class="pi-price">...</span>)</p>
-    </div>
-    <div class="product" data-eur="49">
-      <img src="bag1.png" alt="Prodotto 1">
-      <h3>Code: Bag 01</h3>
-      <p><span class="eur-amount">49 €</span> (<span class="pi-price">...</span>)</p>
-    </div>
-    <div class="product" data-eur="29">
-      <img src="bin1.png" alt="Prodotto 1">
-      <h3>Code: Bin 01</h3>
-      <p><span class="eur-amount">29 €</span> (<span class="pi-price">...</span>)</p>
-    </div>
-    <div class="product" data-eur="25">
-      <img src="bag2.png" alt="Prodotto 1">
-      <h3>Code: Eco Bag 01</h3>
-      <p><span class="eur-amount">25 €</span> (<span class="pi-price">...</span>)</p>
-    </div>
-    <div class="product" data-eur="27">
-      <img src="bag3.png" alt="Prodotto 1">
-      <h3>Code: Eco Bag 02</h3>
-      <p><span class="eur-amount">27 €</span> (<span class="pi-price">...</span>)</p>
-    </div>
-    <div class="product" data-eur="28">
-      <img src="cap2.png" alt="Prodotto 2">
-      <h3>Code: Cap 02</h3>
-      <p><span class="eur-amount">28 €</span> (<span class="pi-price">...</span>)</p>
-    </div>
-    <div class="product" data-eur="25">
-      <img src="cap1.png" alt="Prodotto 1">
-      <h3>Code: Cap 01</h3>
-      <p><span class="eur-amount">25 €</span> (<span class="pi-price">...</span>)</p>
-    </div>
-    <div class="product" data-eur="25">
-      <img src="cap3.png" alt="Prodotto 2">
-      <h3>Code: Cap 03</h3>
-      <p><span class="eur-amount">25 €</span> (<span class="pi-price">...</span>)</p>
-    </div>
-    <div class="product" data-eur="25">
-      <img src="cap4.png" alt="Prodotto 2">
-      <h3>Code: Cap 04</h3>
-      <p><span class="eur-amount">25 €</span> (<span class="pi-price">...</span>)</p>
-    </div>
-    <div class="product" data-eur="28">
-      <img src="cap5.png" alt="Prodotto 2">
-      <h3>Code: Cap 05</h3>
-      <p><span class="eur-amount">28 €</span> (<span class="pi-price">...</span>)</p>
-    </div>
-    <div class="product" data-eur="27">
-      <img src="cap6.png" alt="Prodotto 2">
-      <h3>Code: Cap 06</h3>
-      <p><span class="eur-amount">27 €</span> (<span class="pi-price">...</span>)</p>
-    </div>
-    <div class="product" data-eur="27">
-      <img src="cap7.png" alt="Prodotto 2">
-      <h3>Code: Cap 07</h3>
-      <p><span class="eur-amount">27 €</span> (<span class="pi-price">...</span>)</p>
-    </div>
-    <div class="product" data-eur="16">
-      <img src="cup1.png" alt="Prodotto 2">
-      <h3>Code: Cup 01</h3>
-      <p><span class="eur-amount">16 €</span> (<span class="pi-price">...</span>)</p>
-    </div>
-    <div class="product" data-eur="16">
-      <img src="cup2.png" alt="Prodotto 2">
-      <h3>Code: Cup 02</h3>
-      <p><span class="eur-amount">16 €</span> (<span class="pi-price">...</span>)</p>
-    </div>
-    <div class="product" data-eur="16">
-      <img src="cus1.png" alt="Prodotto 2">
-      <h3>Code: Pillow 01</h3>
-      <p><span class="eur-amount">16 €</span> (<span class="pi-price">...</span>)</p>
-    </div>
-    <div class="product" data-eur="18">
-      <img src="ts1.png" alt="Prodotto 2">
-      <h3>Code: T-Shirt 01</h3>
-      <p><span class="eur-amount">18 €</span> (<span class="pi-price">...</span>)</p>
-    </div>
-    <div class="product" data-eur="18">
-      <img src="ts2.png" alt="Prodotto 2">
-      <h3>Code: T-Shirt 02</h3>
-      <p><span class="eur-amount">18 €</span> (<span class="pi-price">...</span>)</p>
-    </div>
+  <div class="social-buttons">
+    <a href="https://t.me/theanimal89" target="_blank">
+      <img src="img/telegram.png" alt="Telegram" class="button-img" />
+    </a>
+    <a href="https://www.instagram.com/love_on_pi" target="_blank">
+      <img src="img/instagram.png" alt="Instagram" class="button-img" />
+    </a>
+  </div>
+  <div class="info-buttons">
+  <img src="img/about.png" alt="About" class="about-button" onclick="toggleAbout()" />
+  <img src="img/ship.png" alt="Shipping" class="ship-button" onclick="toggleShipping()" />
 </div>
 
-  <a name="about"></a>
-  <div id="about" class="info-section">
-    <h2>Chi Sono</h2>
-    <p>Ciao! Mi chiamo Andrea, ho 35 anni e sono un appassionato di criptovalute. <br>
-      Sono rimasto affascinato dalla visione di Pi Network: un ecosistema accessibile, trasparente e rivolto a tutti.<br>
-      Con questo progetto voglio dare la possibilità a chiunque di acquistare gadget personalizzati a prezzi accessibili pagando in Pi Coin.</p>
-    <h2>About Me</h2>
-    <p>Hi! My name is Andrea, I’m 35 and I’m passionate about crypto.<br>
-      I was fascinated by the way Pi Network aims to build a fair and transparent ecosystem.<br>
-      Through this project, I want to offer everyone the chance to buy cool gadgets at fair prices — using their Pi Coins!</p>
-  </div>
+<div id="aboutText" class="info-text hidden">
+  <h2>Chi Sono</h2>
+  <p>
+    Ciao! Mi chiamo Andrea, ho 35 anni e sono un appassionato di criptovalute.<br />
+    Sono rimasto affascinato dalla visione di Pi Network: un ecosistema accessibile, trasparente e rivolto a tutti.<br />
+    Con questo progetto voglio dare la possibilità a chiunque di acquistare gadget personalizzati a prezzi accessibili pagando in Pi Coin.
+  </p>
+  <h2>About Me</h2>
+  <p>
+    Hi! My name is Andrea, I’m 35 and I’m passionate about crypto.<br />
+    I was fascinated by the way Pi Network aims to build a fair and transparent ecosystem.<br />
+    Through this project, I want to offer everyone the chance to buy cool gadgets at fair prices — using their Pi Coins!
+  </p>
+</div>
 
-  <a name="shipping"></a>
-  <div id="shipping" class="info-section">
-    <h2>Spedizioni</h2>
-    <p>Generalmente gli ordini verranno consegnati entro 5-10 giorni lavorativi in Italia. Effettuiamo spedizioni in tutto il mondo, e le spese di spedizione possono variare a seconda del Paese di destinazione.<br>
-      Love on Pi non gestisce direttamente i gadget ma si avvale di un'azienda partner per evadere ogni ordine nel più breve tempo possibile.<br>
-      Una volta effettuato l'ordine, riceverai entro poche ore il numero di Tracking per monitorare la spedizione.<br>
-      Per maggiori informazioni o per effettuare un ordine, contattaci su Telegram, Instagram o WhatsApp!</p>
-    <h2>Shipping Info</h2>
-    <p>Orders within Italy are usually delivered within 5-10 business days. We ship worldwide and shipping costs may vary depending on your country.<br>
-      Love on Pi does not personally hold any inventory — all items are fulfilled through a trusted partner to ensure quick processing.<br>
-      After placing an order, a tracking number will be provided within a few hours so you can follow your shipment.<br>
-      For more info or to order, get in touch via Telegram, Instagram, or WhatsApp!</p>
-  </div>
+<div id="shipText" class="info-text hidden">
+  <h2>Spedizioni</h2>
+  <p>
+    Generalmente gli ordini verranno consegnati entro 5-10 giorni lavorativi in Italia. Effettuiamo spedizioni in tutto il mondo, e le spese di spedizione possono variare a seconda del Paese di destinazione.<br />
+    Love on Pi non gestisce direttamente i gadget ma si avvale di un'azienda partner per evadere ogni ordine nel più breve tempo possibile.<br />
+    Una volta effettuato l'ordine, riceverai entro poche ore il numero di Tracking per monitorare la spedizione.<br />
+    Per maggiori informazioni o per effettuare un ordine, contattaci su Telegram, Instagram o WhatsApp!
+  </p>
+  <h2>Shipping Info</h2>
+  <p>
+    Orders within Italy are usually delivered within 5-10 business days. We ship worldwide and shipping costs may vary depending on your country.<br />
+    Love on Pi does not personally hold any inventory — all items are fulfilled through a trusted partner to ensure quick processing.<br />
+    After placing an order, a tracking number will be provided within a few hours so you can follow your shipment.<br />
+    For more info or to order, get in touch via Telegram, Instagram, or WhatsApp!
+  </p>
+</div>
 
-  <a name="payment"></a>
-  <div id="payment" class="info-section">
-    <h2>Metodo di Pagamento</h2>
-    <p>Il metodo di pagamento accettato su Love on Pi è il Pi Coin.<br>
-      Per effettuare ordini, completare i pagamenti o ricevere maggiori informazioni sui nostri prodotti, sentiti libero di contattarci tramite Telegram, Instagram o WhatsApp.<br>
-      Siamo sempre disponibili, 24 ore su 24, 7 giorni su 7!</p>
-    <h2>Payment Method</h2>
-    <p>The accepted payment method on Love on Pi is Pi Coin.<br>
-      To place orders, make payments, or get more information about our products, feel free to reach out to us via Telegram, Instagram, or WhatsApp.<br>
-      We're always available — 24/7!</p>
-  </div>
+</div>
+<!-- Seconda riga: payment & legal -->
+<div class="info-buttons">
+  <img src="img/payment.png" alt="Payment" class="payment-button" onclick="togglePayment()" />
+  <img src="img/legal.png" alt="Legal" class="legal-button" onclick="toggleLegal()" />
+</div>
 
-  <a name="legal"></a>
-  <div id="legal" class="info-section">
-    <h2>Note Legali</h2>
-    <p>Love on Pi non è un’azienda registrata ma un progetto amatoriale per appassionati della rete Pi Network.<br>
-      Tutti i prodotti vengono spediti tramite fornitori terzi affidabili, nel rispetto della privacy e delle normative internazionali.<br>
-      I pagamenti in Pi Coin sono da considerarsi tra privati, senza fini di lucro.</p>
-    <h2>Legal Notice</h2>
-    <p>Love on Pi is not a registered company, but a fan-driven project dedicated to Pi Network enthusiasts.<br>
-      All products are fulfilled via trusted third-party services, respecting international privacy and shipping regulations.<br>
-      Pi Coin payments are peer-to-peer and non-commercial in nature.</p>
-  </div>
+<!-- Testo: Payment -->
+<div id="paymentText" class="info-text hidden">
+  <h2>Metodo di Pagamento</h2>
+  <p>
+    Il metodo di pagamento accettato su Love on Pi è il Pi Coin.<br />
+    Per effettuare ordini, completare i pagamenti o ricevere maggiori informazioni sui nostri prodotti, sentiti libero di contattarci tramite Telegram, Instagram o WhatsApp.<br />
+    Siamo sempre disponibili, 24 ore su 24, 7 giorni su 7!
+  </p>
+  <h2>Payment Method</h2>
+  <p>
+    The accepted payment method on Love on Pi is Pi Coin.<br />
+    To place orders, make payments, or get more information about our products, feel free to reach out to us via Telegram, Instagram, or WhatsApp.<br />
+    We're always available — 24/7!
+  </p>
+</div>
 
-  <a href="#top">
-    <img src="up-arrow.png" alt="Torna su" class="world-image">
-  </a>
+<!-- Testo: Legal -->
+<div id="legalText" class="info-text hidden">
+  <h2>Note Legali</h2>
+  <p>
+    Love on Pi non è un’azienda registrata ma un progetto amatoriale per appassionati della rete Pi Network.<br />
+    Tutti i prodotti vengono spediti tramite fornitori terzi affidabili, nel rispetto della privacy e delle normative internazionali.<br />
+    I pagamenti in Pi Coin sono da considerarsi tra privati, senza fini di lucro.
+  </p>
+  <h2>Legal Notice</h2>
+  <p>
+    Love on Pi is not a registered company, but a fan-driven project dedicated to Pi Network enthusiasts.<br />
+    All products are fulfilled via trusted third-party services, respecting international privacy and shipping regulations.<br />
+    Pi Coin payments are peer-to-peer and non-commercial in nature.
+  </p>
+</div>
+<!-- Pulsanti categorie prodotto -->
+<div class="product-buttons">
+  <img src="img/tshirt.png" class="tshirt-button" onclick="loadModal('tshirt.html')" />
+  <img src="img/hat.png" class="hat-button" onclick="loadModal('hat.html')" />
+  <img src="img/bottle.png" class="bottle-button" onclick="loadModal('bottle.html')" />
+  <img src="img/bag.png" class="bag-button" onclick="loadModal('bag.html')" />
+  <img src="img/stickers.png" class="stickers-button" onclick="loadModal('stickers.html')" />
+  <img src="img/utility.png" class="utility-button" onclick="loadModal('utility.html')" />
+  <img src="img/giftcard.png" class="giftcard-button" onclick="loadModal('giftcard.html')" />
+  <img src="img/cover.png" class="cover-button" onclick="loadModal('cover.html')" />
+</div>
+
+<!-- Modale dinamico unico -->
+<div id="dynamic-modal" class="modal hidden">
+  <div class="modal-content">
+    <span class="close" onclick="closeDynamicModal()">&times;</span>
+    <div id="modal-body">
+      <!-- Il contenuto da *.html verrà caricato qui -->
+    </div>
+  </div>
+</div>
+
+
 
   <script>
-    function updateProductPrices(piToEur) {
-      const products = document.querySelectorAll('.product');
-      products.forEach(product => {
-        const eurAmount = parseFloat(product.getAttribute('data-eur'));
-        const piValue = (eurAmount / piToEur).toFixed(2);
-        product.querySelector('.pi-price').textContent = piValue + ' Pi';
-      });
-    }
+  async function updatePiValue() {
+    try {
+      const response = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=pi-network&vs_currencies=usd');
+      const data = await response.json();
+      const price = data['pi-network']?.usd;
 
-    fetch('https://api.coingecko.com/api/v3/simple/price?ids=pi-network&vs_currencies=eur')
-      .then(response => response.json())
-      .then(data => {
-        const piValue = data['pi-network'].eur;
-        document.getElementById('pi-value').textContent = piValue.toFixed(2) + ' €';
-        updateProductPrices(piValue);
+      if (price) {
+        document.getElementById("piValue").textContent = price.toFixed(4) + " $";
+
+        // Salva il valore 1π = X USD per uso nei popup
+        localStorage.setItem('piRate', price);
+      } else {
+        document.getElementById("piValue").textContent = "N/A";
+      }
+    } catch (error) {
+      document.getElementById("piValue").textContent = "Errore";
+      console.error("Errore nel recupero del prezzo di Pi:", error);
+    }
+  }
+
+  // Aggiorna il valore ogni 30 secondi
+  updatePiValue();
+  setInterval(updatePiValue, 30000);
+</script>
+
+<script>
+  function toggleAbout() {
+    document.getElementById("aboutText").classList.toggle("hidden");
+    document.getElementById("shipText").classList.add("hidden");
+  }
+
+  function toggleShipping() {
+    document.getElementById("shipText").classList.toggle("hidden");
+    document.getElementById("aboutText").classList.add("hidden");
+  }
+</script>
+<script>
+  function hideAllTexts() {
+    document.getElementById("aboutText").classList.add("hidden");
+    document.getElementById("shipText").classList.add("hidden");
+    document.getElementById("paymentText").classList.add("hidden");
+    document.getElementById("legalText").classList.add("hidden");
+  }
+
+  function toggleAbout() {
+    const block = document.getElementById("aboutText");
+    const isHidden = block.classList.contains("hidden");
+    hideAllTexts();
+    if (isHidden) block.classList.remove("hidden");
+  }
+
+  function toggleShipping() {
+    const block = document.getElementById("shipText");
+    const isHidden = block.classList.contains("hidden");
+    hideAllTexts();
+    if (isHidden) block.classList.remove("hidden");
+  }
+
+  function togglePayment() {
+    const block = document.getElementById("paymentText");
+    const isHidden = block.classList.contains("hidden");
+    hideAllTexts();
+    if (isHidden) block.classList.remove("hidden");
+  }
+
+  function toggleLegal() {
+    const block = document.getElementById("legalText");
+    const isHidden = block.classList.contains("hidden");
+    hideAllTexts();
+    if (isHidden) block.classList.remove("hidden");
+  }
+</script>
+<script>
+  function loadModal(file) {
+    fetch(file)
+      .then(response => response.text())
+      .then(html => {
+        document.getElementById("modal-body").innerHTML = html;
+        document.getElementById("dynamic-modal").classList.remove("hidden");
       })
-      .catch(() => {
-        document.getElementById('pi-value').textContent = 'Valore non disponibile';
+      .catch(err => {
+        document.getElementById("modal-body").innerHTML = "<p>Errore nel caricamento.</p>";
+        document.getElementById("dynamic-modal").classList.remove("hidden");
       });
-  </script>
+  }
+
+  function closeDynamicModal() {
+    document.getElementById("dynamic-modal").classList.add("hidden");
+    document.getElementById("modal-body").innerHTML = "";
+  }
+</script>
+<script>
+  function loadModal(file) {
+    fetch(file)
+      .then(response => response.text())
+      .then(html => {
+        document.getElementById("modal-body").innerHTML = html;
+
+        // Dopo il caricamento del contenuto, forza il calcolo dei Pi
+        const piRate = localStorage.getItem('piRate') || 36.0;
+
+        // Aspetta un attimo per essere sicuro che il DOM sia aggiornato
+        setTimeout(() => {
+          document.querySelectorAll('.pi-price').forEach(el => {
+            const usd = parseFloat(el.dataset.usd);
+            if (!isNaN(usd)) {
+              const piValue = (usd / piRate).toFixed(4);
+              el.textContent = piValue;
+            }
+          });
+        }, 50); // piccolo delay
+          
+        document.getElementById("dynamic-modal").classList.remove("hidden");
+      })
+      .catch(err => {
+        document.getElementById("modal-body").innerHTML = "<p>Errore nel caricamento.</p>";
+        document.getElementById("dynamic-modal").classList.remove("hidden");
+      });
+  }
+</script>
+
+
+
+
 </body>
 </html>
 
