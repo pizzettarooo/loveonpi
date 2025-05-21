@@ -21,9 +21,14 @@ body {
 .social-buttons {
   display: flex;
   justify-content: center;
+  align-items: center;
+  flex-wrap: wrap; /* per evitare overflow su mobile */
   gap: 0.1rem;
-  margin: 0.1rem 0;
+  margin: 0.1rem auto;
+  width: 100%;
+  text-align: center;
 }
+
 
 .button-img {
   width: 250px;
