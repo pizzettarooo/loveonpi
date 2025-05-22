@@ -31,6 +31,22 @@
     margin-top: 10px;
     text-shadow: 0 0 5px #00f0ff;
   "></div>
+  <div id="pay-button-container" style="display: none; margin-top: 10px;">
+  <button id="pi-pay" style="
+    background: linear-gradient(90deg, #ff00ff, #ff66cc);
+    border: none;
+    color: black;
+    font-weight: bold;
+    padding: 10px 25px;
+    border-radius: 12px;
+    font-size: 1.2em;
+    cursor: pointer;
+    box-shadow: 0 0 15px #ff00ff;
+  ">
+    Paga 1π
+  </button>
+</div>
+
 </div>
 
 
@@ -300,11 +316,45 @@
   const userInfo = document.getElementById("user-info");
   userInfo.textContent = "Hey, @" + auth.user.username;
   userInfo.style.display = "block";
+
+  // Mostra bottone pagamento
+  document.getElementById("pay-button-container").style.display = "block";
 })
+
 
     .catch(err => {
       console.error("Errore login:", err);
       alert("Errore nel login: " + err.message);
+    });
+  });
+</script>
+
+<script>
+  document.getElementById("pi-pay").addEventListener("click", () => {
+    Pi.createPayment({
+      amount: 1,
+      memo: "Pagamento simbolico di supporto",
+      metadata: { tipo: "donazione" },
+      onReadyForServerApproval: function(paymentId) {
+        fetch("https://bf8bc5c4-f1ae-4b22-bc08-7066b14bbd87-00-71zslu9qusyh.worf.replit.dev/", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({ paymentId })
+        }).then(() => {
+          console.log("Richiesta inviata al backend");
+        });
+      },
+      onReadyForServerCompletion: function(paymentId, txid) {
+        alert("Pagamento completato con successo!");
+      },
+      onCancel: function(paymentId) {
+        alert("Pagamento annullato.");
+      },
+      onError: function(error) {
+        alert("Errore nel pagamento: " + error.message);
+      }
     });
   });
 </script>
