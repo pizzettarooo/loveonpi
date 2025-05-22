@@ -5,8 +5,25 @@
   <meta name="viewport" content="width=device-width" />
   <title>Love on Pi</title>
   <link rel="stylesheet" href="style.css" />
+  <script src="https://sdk.minepi.com/pi-sdk.js"></script>
 </head>
 <body>
+<div style="text-align: center; margin-top: 20px;">
+  <button id="pi-login" style="
+    background: linear-gradient(90deg, #00f0ff, #0ff);
+    border: none;
+    color: black;
+    font-weight: bold;
+    padding: 10px 25px;
+    border-radius: 12px;
+    font-size: 1.2em;
+    cursor: pointer;
+    box-shadow: 0 0 15px #0ff;
+  ">
+    Login con Pi
+  </button>
+</div>
+
   <div class="logo-container">
     <img src="img/logo.png" alt="Love on Pi logo" class="logo" />
   </div>
@@ -251,9 +268,28 @@
       });
   }
 </script>
+<script>
+  Pi.init({
+    version: "2.0",
+    sandbox: false // usa false in produzione
+  });
 
+  document.getElementById("pi-login").addEventListener("click", () => {
+    const scopes = ["username", "payments"];
 
-
+    Pi.authenticate(scopes, (payment) => {
+      console.log("Pagamento incompleto:", payment);
+    })
+    .then(auth => {
+      console.log("Login OK:", auth);
+      alert("Login effettuato come @" + auth.user.username);
+    })
+    .catch(err => {
+      console.error("Errore login:", err);
+      alert("Errore nel login: " + err.message);
+    });
+  });
+</script>
 
 </body>
 </html>
