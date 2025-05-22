@@ -22,7 +22,17 @@
   ">
     Login con Pi
   </button>
+
+  <div id="user-info" style="
+    display: none;
+    font-weight: bold;
+    font-size: 1.2em;
+    color: #0ff;
+    margin-top: 10px;
+    text-shadow: 0 0 5px #00f0ff;
+  "></div>
 </div>
+
 
   <div class="logo-container">
     <img src="img/logo.png" alt="Love on Pi logo" class="logo" />
@@ -281,9 +291,17 @@
       console.log("Pagamento incompleto:", payment);
     })
     .then(auth => {
-      console.log("Login OK:", auth);
-      alert("Login effettuato come @" + auth.user.username);
-    })
+  console.log("Login OK:", auth);
+
+  // Nascondi il bottone login
+  document.getElementById("pi-login").style.display = "none";
+
+  // Mostra username
+  const userInfo = document.getElementById("user-info");
+  userInfo.textContent = "Ciao, @" + auth.user.username;
+  userInfo.style.display = "block";
+})
+
     .catch(err => {
       console.error("Errore login:", err);
       alert("Errore nel login: " + err.message);
