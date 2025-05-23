@@ -336,19 +336,39 @@
       memo: "Pagamento simbolico di supporto",
       metadata: { tipo: "donazione" },
       onReadyForServerApproval: function(paymentId) {
-        fetch("https://bf8bc5c4-f1ae-4b22-bc08-7066b14bbd87-00-71zslu9qusyh.worf.replit.dev/", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json"
-          },
-          body: JSON.stringify({ paymentId })
-        }).then(() => {
-          console.log("Richiesta inviata al backend");
-        });
-      },
-      onReadyForServerCompletion: function(paymentId, txid) {
-        alert("Pagamento completato con successo!");
-      },
+  fetch("https://bf8bc5c4-f1ae-4b22-bc08-7066b14bbd87-00-71zslu9qusyh.worf.replit.dev/", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      action: "approve",
+      paymentId: paymentId
+    })
+  }).then(() => {
+    console.log("✅ Approvazione inviata al backend");
+  }).catch(err => {
+    console.error("❌ Errore approvazione:", err);
+  });
+},
+onReadyForServerCompletion: function(paymentId, txid) {
+  fetch("https://bf8bc5c4-f1ae-4b22-bc08-7066b14bbd87-00-71zslu9qusyh.worf.replit.dev/", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      action: "complete",
+      paymentId: paymentId,
+      txid: txid
+    })
+  }).then(() => {
+    alert("✅ Pagamento completato con successo!");
+  }).catch(err => {
+    alert("❌ Errore completamento: " + err.message);
+  });
+},
+
       onCancel: function(paymentId) {
         alert("Pagamento annullato.");
       },
