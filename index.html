@@ -2,259 +2,149 @@
 <html lang="it">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width" />
-  <title>Love on Pi</title>
-  <link rel="stylesheet" href="style.css" />
-  <script src="https://sdk.minepi.com/pi-sdk.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Loading...</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap');
+
+    body {
+      margin: 0;
+      background-color: #000;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    h1 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 3rem;
+      color: #ffea00;
+      text-shadow: 0 0 10px #ffea00, 0 0 20px #ffea00, 0 0 40px #ffea00;
+      margin-bottom: 60px;
+      letter-spacing: 4px;
+      z-index: 1;
+    }
+
+    .loader {
+  width: 80px;
+  height: 80px;
+  border: 10px solid;
+  border-radius: 50%;
+  border-color: #ffea00 #ff00ff #00f0ff #ff00ff; /* giallo, viola, blu, viola */
+  animation: spin 1.2s linear infinite;
+  box-shadow:
+    0 0 12px #ffea00,
+    0 0 12px #ff00ff,
+    0 0 12px #00f0ff;
+}
+
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .electric-background {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .electric-line {
+      position: absolute;
+      width: 1px;
+      height: 100%;
+      animation: electricMove 2s linear infinite;
+      opacity: 0.6;
+    }
+
+    .electric-line.blue {
+      background: linear-gradient(to top, rgba(0,255,255,0) 0%, rgba(0,255,255,0.8) 50%, rgba(0,255,255,0) 100%);
+    }
+    .electric-line.yellow {
+      background: linear-gradient(to top, rgba(255,255,0,0) 0%, rgba(255,255,0,0.8) 50%, rgba(255,255,0,0) 100%);
+    }
+    .electric-line.purple {
+      background: linear-gradient(to top, rgba(255,0,255,0) 0%, rgba(255,0,255,0.8) 50%, rgba(255,0,255,0) 100%);
+    }
+
+    .electric-line:nth-child(1)  { left: 5%; animation-delay: 0s; }
+    .electric-line:nth-child(2)  { left: 10%; animation-delay: 0.1s; }
+    .electric-line:nth-child(3)  { left: 15%; animation-delay: 0.2s; }
+    .electric-line:nth-child(4)  { left: 20%; animation-delay: 0.3s; }
+
+    .electric-line:nth-child(5)  { left: 25%; animation-delay: 0.4s; }
+    .electric-line:nth-child(6)  { left: 30%; animation-delay: 0.5s; }
+    .electric-line:nth-child(7)  { left: 35%; animation-delay: 0.6s; }
+    .electric-line:nth-child(8)  { left: 40%; animation-delay: 0.7s; }
+
+    .electric-line:nth-child(9)  { left: 45%; animation-delay: 0.8s; }
+    .electric-line:nth-child(10) { left: 50%; animation-delay: 0.9s; }
+    .electric-line:nth-child(11) { left: 55%; animation-delay: 1.0s; }
+    .electric-line:nth-child(12) { left: 60%; animation-delay: 1.1s; }
+
+    .electric-line:nth-child(13) { left: 65%; animation-delay: 1.2s; }
+    .electric-line:nth-child(14) { left: 70%; animation-delay: 1.3s; }
+    .electric-line:nth-child(15) { left: 75%; animation-delay: 1.4s; }
+    .electric-line:nth-child(16) { left: 80%; animation-delay: 1.5s; }
+
+    .electric-line:nth-child(17) { left: 85%; animation-delay: 1.6s; }
+    .electric-line:nth-child(18) { left: 90%; animation-delay: 1.7s; }
+    .electric-line:nth-child(19) { left: 95%; animation-delay: 1.8s; }
+    .electric-line:nth-child(20) { left: 98%; animation-delay: 1.9s; }
+
+    @keyframes electricMove {
+      0%   { transform: translateY(100%); opacity: 0; }
+      20%  { opacity: 1; }
+      80%  { opacity: 1; }
+      100% { transform: translateY(-100%); opacity: 0; }
+    }
+  </style>
 </head>
 <body>
-<div style="text-align: center; margin-top: 20px;">
-  <button id="pi-login" style="
-    background: linear-gradient(90deg, #00f0ff, #0ff);
-    border: none;
-    color: black;
-    font-weight: bold;
-    padding: 10px 25px;
-    border-radius: 12px;
-    font-size: 1.2em;
-    cursor: pointer;
-    box-shadow: 0 0 15px #0ff;
-  ">
-    Pi Login
-  </button>
+  <h1>LOVE ON PI</h1>
+  <div class="loader"></div>
 
-  <div id="user-info" style="
-    display: none;
-    font-weight: bold;
-    font-size: 1.2em;
-    color: #0ff;
-    margin-top: 10px;
-    text-shadow: 0 0 5px #00f0ff;
-  "></div>
+  <div class="electric-background">
+    <div class="electric-line blue"></div>
+    <div class="electric-line yellow"></div>
+    <div class="electric-line purple"></div>
+    <div class="electric-line yellow"></div>
 
+    <div class="electric-line blue"></div>
+    <div class="electric-line yellow"></div>
+    <div class="electric-line purple"></div>
+    <div class="electric-line yellow"></div>
 
-</div>
+    <div class="electric-line blue"></div>
+    <div class="electric-line yellow"></div>
+    <div class="electric-line purple"></div>
+    <div class="electric-line yellow"></div>
 
+    <div class="electric-line blue"></div>
+    <div class="electric-line yellow"></div>
+    <div class="electric-line purple"></div>
+    <div class="electric-line yellow"></div>
 
-  <div class="logo-container">
-    <img src="img/logo.png" alt="Love on Pi logo" class="logo" />
+    <div class="electric-line blue"></div>
+    <div class="electric-line yellow"></div>
+    <div class="electric-line purple"></div>
+    <div class="electric-line yellow"></div>
   </div>
-  <div class="pi-value-container">
-  <span class="label">1π =</span>
-  <span id="piValue" class="pi-glow">...</span>
-</div>
-  <div class="social-buttons">
-    <a href="https://wa.me/393318524149" target="_blank">
-      <img src="img/whatsapp.png" alt="WhatsApp" class="button-img" />
-    </a>
-    <a href="mailto:support@loveonpi.com">
-      <img src="img/email.png" alt="Email" class="button-img" />
-    </a>
-  </div>
-
-  <div class="social-buttons">
-    <a href="https://t.me/theanimal89" target="_blank">
-      <img src="img/telegram.png" alt="Telegram" class="button-img" />
-    </a>
-    <a href="https://www.instagram.com/love_on_pi" target="_blank">
-      <img src="img/instagram.png" alt="Instagram" class="button-img" />
-    </a>
-  </div>
-<img src="img/about.png" alt="About" class="about-button" onclick="loadModal('about.html')" />
-<img src="img/ship.png" alt="Shipping" class="ship-button" onclick="loadModal('ship.html')" />
-<img src="img/payment.png" alt="Payment" class="payment-button" onclick="loadModal('payment.html')" />
-<img src="img/legal.png" alt="Legal" class="legal-button" onclick="loadModal('legal.html')" />
-
-<!-- Pulsanti categorie prodotto -->
-<div class="product-buttons">
-  <img src="img/tshirt.png" class="tshirt-button" onclick="loadModal('tshirt.html')" />
-  <img src="img/hat.png" class="hat-button" onclick="loadModal('hat.html')" />
-  <img src="img/bottle.png" class="bottle-button" onclick="loadModal('bottle.html')" />
-  <img src="img/bag.png" class="bag-button" onclick="loadModal('bag.html')" />
-  <img src="img/stickers.png" class="stickers-button" onclick="loadModal('stickers.html')" />
-  <img src="img/utility.png" class="utility-button" onclick="loadModal('utility.html')" />
-  <img src="img/giftcard.png" class="giftcard-button" onclick="loadModal('giftcard.html')" />
-  <img src="img/cover.png" class="cover-button" onclick="loadModal('cover.html')" />
-</div>
-
-<!-- Modale dinamico unico -->
-<div id="dynamic-modal" class="modal hidden">
-  <div class="modal-content">
-    <span class="close" onclick="closeDynamicModal()">&times;</span>
-    <div id="modal-body">
-      <!-- Il contenuto da *.html verrà caricato qui -->
-    </div>
-  </div>
-</div>
-
-
 
   <script>
-  async function updatePiValue() {
-    try {
-      const response = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=pi-network&vs_currencies=usd');
-      const data = await response.json();
-      const price = data['pi-network']?.usd;
-
-      if (price) {
-        document.getElementById("piValue").textContent = price.toFixed(4) + " $";
-
-        // Salva il valore 1π = X USD per uso nei popup
-        localStorage.setItem('piRate', price);
-      } else {
-        document.getElementById("piValue").textContent = "N/A";
-      }
-    } catch (error) {
-      document.getElementById("piValue").textContent = "Errore";
-      console.error("Errore nel recupero del prezzo di Pi:", error);
-    }
-  }
-
-  // Aggiorna il valore ogni 30 secondi
-  updatePiValue();
-  setInterval(updatePiValue, 30000);
-</script>
-
-<script>
-  function toggleAbout() {
-    document.getElementById("aboutText").classList.toggle("hidden");
-    document.getElementById("shipText").classList.add("hidden");
-  }
-
-  function toggleShipping() {
-    document.getElementById("shipText").classList.toggle("hidden");
-    document.getElementById("aboutText").classList.add("hidden");
-  }
-</script>
-<script>
-  function hideAllTexts() {
-    document.getElementById("aboutText").classList.add("hidden");
-    document.getElementById("shipText").classList.add("hidden");
-    document.getElementById("paymentText").classList.add("hidden");
-    document.getElementById("legalText").classList.add("hidden");
-  }
-
-  function toggleAbout() {
-    const block = document.getElementById("aboutText");
-    const isHidden = block.classList.contains("hidden");
-    hideAllTexts();
-    if (isHidden) block.classList.remove("hidden");
-  }
-
-  function toggleShipping() {
-    const block = document.getElementById("shipText");
-    const isHidden = block.classList.contains("hidden");
-    hideAllTexts();
-    if (isHidden) block.classList.remove("hidden");
-  }
-
-  function togglePayment() {
-    const block = document.getElementById("paymentText");
-    const isHidden = block.classList.contains("hidden");
-    hideAllTexts();
-    if (isHidden) block.classList.remove("hidden");
-  }
-
-  function toggleLegal() {
-    const block = document.getElementById("legalText");
-    const isHidden = block.classList.contains("hidden");
-    hideAllTexts();
-    if (isHidden) block.classList.remove("hidden");
-  }
-</script>
-<script>
-  function loadModal(file) {
-    fetch(file)
-      .then(response => response.text())
-      .then(html => {
-        document.getElementById("modal-body").innerHTML = html;
-        document.getElementById("dynamic-modal").classList.remove("hidden");
-      })
-      .catch(err => {
-        document.getElementById("modal-body").innerHTML = "<p>Errore nel caricamento.</p>";
-        document.getElementById("dynamic-modal").classList.remove("hidden");
-      });
-  }
-
-  function closeDynamicModal() {
-    document.getElementById("dynamic-modal").classList.add("hidden");
-    document.getElementById("modal-body").innerHTML = "";
-  }
-</script>
-<script>
-  function loadModal(file) {
-    fetch(file)
-      .then(response => response.text())
-      .then(html => {
-        document.getElementById("modal-body").innerHTML = html;
-
-        // Dopo il caricamento del contenuto, forza il calcolo dei Pi
-        const piRate = localStorage.getItem('piRate') || 36.0;
-
-        // Aspetta un attimo per essere sicuro che il DOM sia aggiornato
-        setTimeout(() => {
-          document.querySelectorAll('.pi-price').forEach(el => {
-            const usd = parseFloat(el.dataset.usd);
-            if (!isNaN(usd)) {
-              const piValue = (usd / piRate).toFixed(4);
-              el.textContent = piValue;
-            }
-          });
-        }, 50); // piccolo delay
-          
-        document.getElementById("dynamic-modal").classList.remove("hidden");
-      })
-      .catch(err => {
-        document.getElementById("modal-body").innerHTML = "<p>Errore nel caricamento.</p>";
-        document.getElementById("dynamic-modal").classList.remove("hidden");
-      });
-  }
-</script>
-<script>
-  Pi.init({
-    version: "2.0",
-    sandbox: false // usa false in produzione
-  });
-
-  document.getElementById("pi-login").addEventListener("click", () => {
-    const scopes = ["username", "payments"];
-
-    Pi.authenticate(scopes, (payment) => {
-      console.log("Pagamento incompleto:", payment);
-    })
-    .then(auth => {
-  console.log("Login OK:", auth);
-
-  // Nascondi il bottone login
-  document.getElementById("pi-login").style.display = "none";
-
-  // Mostra username
-  const userInfo = document.getElementById("user-info");
-  userInfo.textContent = "Hey, @" + auth.user.username;
-  userInfo.style.display = "block";
-
-
-})
-
-
-    .catch(err => {
-      console.error("Errore login:", err);
-      alert("Errore nel login: " + err.message);
-    });
-  });
-</script>
-
-<!-- TrustBox widget - Review Collector -->
-<div class="trustpilot-widget"
-     data-locale="en-US"
-     data-template-id="56278e9abfbbba0bdcd568bc"
-     data-businessunit-id="682db7fefe7a18bd7cb32fa7"
-     data-style-height="52px"
-     data-style-width="100%">
-  <a href="https://www.trustpilot.com/review/loveonpi.com" target="_blank" rel="noopener">Trustpilot</a>
-</div>
-<script type="text/javascript" src="//widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js" async></script>
-<!-- End TrustBox widget -->
-
+    setTimeout(() => {
+      window.location.href = "home.html";
+    }, 4000);
+  </script>
 </body>
 </html>
+

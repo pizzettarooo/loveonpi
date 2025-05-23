@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width" />
+  <title>Love on Pi</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://sdk.minepi.com/pi-sdk.js"></script>
+</head>
+<body>
+
+<div style="text-align: center; margin-top: 20px;">
+  <button id="pi-login" style="
+    background: linear-gradient(90deg, #00f0ff, #0ff);
+    border: none;
+    color: black;
+    font-weight: bold;
+    padding: 10px 25px;
+    border-radius: 12px;
+    font-size: 1.2em;
+    cursor: pointer;
+    box-shadow: 0 0 15px #0ff;
+  ">
+    Pi Login
+  </button>
+
+  <div id="user-info" style="
+    display: none;
+    font-weight: bold;
+    font-size: 1.2em;
+    color: #0ff;
+    margin-top: 10px;
+    text-shadow: 0 0 5px #00f0ff;
+  "></div>
+
+
+</div>
+
+
+  <div class="logo-container">
+    <img src="img/logo.png" alt="Love on Pi logo" class="logo" />
+  </div>
+  <div class="pi-value-container">
+  <span class="label">1π =</span>
+  <span id="piValue" class="pi-glow">...</span>
+</div>
+  <div class="social-buttons">
+    <a href="https://wa.me/393318524149" target="_blank">
+      <img src="img/whatsapp.png" alt="WhatsApp" class="button-img" />
+    </a>
+    <a href="mailto:support@loveonpi.com">
+      <img src="img/email.png" alt="Email" class="button-img" />
+    </a>
+  </div>
+
+  <div class="social-buttons">
+    <a href="https://t.me/theanimal89" target="_blank">
+      <img src="img/telegram.png" alt="Telegram" class="button-img" />
+    </a>
+    <a href="https://www.instagram.com/love_on_pi" target="_blank">
+      <img src="img/instagram.png" alt="Instagram" class="button-img" />
+    </a>
+  </div>
+<img src="img/about.png" alt="About" class="about-button" onclick="loadModal('about.html')" />
+<img src="img/ship.png" alt="Shipping" class="ship-button" onclick="loadModal('ship.html')" />
+<img src="img/payment.png" alt="Payment" class="payment-button" onclick="loadModal('payment.html')" />
+<img src="img/legal.png" alt="Legal" class="legal-button" onclick="loadModal('legal.html')" />
+
+<!-- Pulsanti categorie prodotto -->
+<div class="product-buttons">
+  <img src="img/tshirt.png" class="tshirt-button" onclick="loadModal('tshirt.html')" />
+  <img src="img/hat.png" class="hat-button" onclick="loadModal('hat.html')" />
+  <img src="img/bottle.png" class="bottle-button" onclick="loadModal('bottle.html')" />
+  <img src="img/bag.png" class="bag-button" onclick="loadModal('bag.html')" />
+  <img src="img/stickers.png" class="stickers-button" onclick="loadModal('stickers.html')" />
+  <img src="img/utility.png" class="utility-button" onclick="loadModal('utility.html')" />
+  <img src="img/giftcard.png" class="giftcard-button" onclick="loadModal('giftcard.html')" />
+  <img src="img/cover.png" class="cover-button" onclick="loadModal('cover.html')" />
+</div>
+
+<!-- Modale dinamico unico -->
+<div id="dynamic-modal" class="modal hidden">
+  <div class="modal-content">
+    <span class="close" onclick="closeDynamicModal()">&times;</span>
+    <div id="modal-body">
+      <!-- Il contenuto da *.html verrà caricato qui -->
+    </div>
+  </div>
+</div>
+
+
+
+  <script>
+  async function updatePiValue() {
+    try {
+      const response = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=pi-network&vs_currencies=usd');
+      const data = await response.json();
+      const price = data['pi-network']?.usd;
+
+      if (price) {
+        document.getElementById("piValue").textContent = price.toFixed(4) + " $";
+
+        // Salva il valore 1π = X USD per uso nei popup
+        localStorage.setItem('piRate', price);
+      } else {
+        document.getElementById("piValue").textContent = "N/A";
+      }
+    } catch (error) {
+      document.getElementById("piValue").textContent = "Errore";
+      console.error("Errore nel recupero del prezzo di Pi:", error);
+    }
+  }
+
+  // Aggiorna il valore ogni 30 secondi
+  updatePiValue();
+  setInterval(updatePiValue, 30000);
+</script>
+
+<script>
+  function toggleAbout() {
+    document.getElementById("aboutText").classList.toggle("hidden");
+    document.getElementById("shipText").classList.add("hidden");
+  }
+
+  function toggleShipping() {
+    document.getElementById("shipText").classList.toggle("hidden");
+    document.getElementById("aboutText").classList.add("hidden");
+  }
+</script>
+<script>
+  function hideAllTexts() {
+    document.getElementById("aboutText").classList.add("hidden");
+    document.getElementById("shipText").classList.add("hidden");
+    document.getElementById("paymentText").classList.add("hidden");
+    document.getElementById("legalText").classList.add("hidden");
+  }
+
+  function toggleAbout() {
+    const block = document.getElementById("aboutText");
+    const isHidden = block.classList.contains("hidden");
+    hideAllTexts();
+    if (isHidden) block.classList.remove("hidden");
+  }
+
+  function toggleShipping() {
+    const block = document.getElementById("shipText");
+    const isHidden = block.classList.contains("hidden");
+    hideAllTexts();
+    if (isHidden) block.classList.remove("hidden");
+  }
+
+  function togglePayment() {
+    const block = document.getElementById("paymentText");
+    const isHidden = block.classList.contains("hidden");
+    hideAllTexts();
+    if (isHidden) block.classList.remove("hidden");
+  }
+
+  function toggleLegal() {
+    const block = document.getElementById("legalText");
+    const isHidden = block.classList.contains("hidden");
+    hideAllTexts();
+    if (isHidden) block.classList.remove("hidden");
+  }
+</script>
+<script>
+  function loadModal(file) {
+    fetch(file)
+      .then(response => response.text())
+      .then(html => {
+        document.getElementById("modal-body").innerHTML = html;
+        document.getElementById("dynamic-modal").classList.remove("hidden");
+      })
+      .catch(err => {
+        document.getElementById("modal-body").innerHTML = "<p>Errore nel caricamento.</p>";
+        document.getElementById("dynamic-modal").classList.remove("hidden");
+      });
+  }
+
+  function closeDynamicModal() {
+    document.getElementById("dynamic-modal").classList.add("hidden");
+    document.getElementById("modal-body").innerHTML = "";
+  }
+</script>
+<script>
+  function loadModal(file) {
+    fetch(file)
+      .then(response => response.text())
+      .then(html => {
+        document.getElementById("modal-body").innerHTML = html;
+
+        // Dopo il caricamento del contenuto, forza il calcolo dei Pi
+        const piRate = localStorage.getItem('piRate') || 36.0;
+
+        // Aspetta un attimo per essere sicuro che il DOM sia aggiornato
+        setTimeout(() => {
+          document.querySelectorAll('.pi-price').forEach(el => {
+            const usd = parseFloat(el.dataset.usd);
+            if (!isNaN(usd)) {
+              const piValue = (usd / piRate).toFixed(4);
+              el.textContent = piValue;
+            }
+          });
+        }, 50); // piccolo delay
+          
+        document.getElementById("dynamic-modal").classList.remove("hidden");
+      })
+      .catch(err => {
+        document.getElementById("modal-body").innerHTML = "<p>Errore nel caricamento.</p>";
+        document.getElementById("dynamic-modal").classList.remove("hidden");
+      });
+  }
+</script>
+<script>
+  Pi.init({
+    version: "2.0",
+    sandbox: false // usa false in produzione
+  });
+
+  document.getElementById("pi-login").addEventListener("click", () => {
+    const scopes = ["username", "payments"];
+
+    Pi.authenticate(scopes, (payment) => {
+      console.log("Pagamento incompleto:", payment);
+    })
+    .then(auth => {
+  console.log("Login OK:", auth);
+
+  // Nascondi il bottone login
+  document.getElementById("pi-login").style.display = "none";
+
+  // Mostra username
+  const userInfo = document.getElementById("user-info");
+  userInfo.textContent = "Hey, @" + auth.user.username;
+  userInfo.style.display = "block";
+
+
+})
+
+
+    .catch(err => {
+      console.error("Errore login:", err);
+      alert("Errore nel login: " + err.message);
+    });
+  });
+</script>
+
+<!-- TrustBox widget - Review Collector -->
+<div class="trustpilot-widget"
+     data-locale="en-US"
+     data-template-id="56278e9abfbbba0bdcd568bc"
+     data-businessunit-id="682db7fefe7a18bd7cb32fa7"
+     data-style-height="52px"
+     data-style-width="100%">
+  <a href="https://www.trustpilot.com/review/loveonpi.com" target="_blank" rel="noopener">Trustpilot</a>
+</div>
+<script type="text/javascript" src="//widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js" async></script>
+<!-- End TrustBox widget -->
+
+</body>
+</html>
