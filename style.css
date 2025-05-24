@@ -240,14 +240,22 @@ body {
 /* ---------- RESPONSIVE / MOBILE FIX ---------- */
 
 @media screen and (max-width: 600px) {
+  .modal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
   .modal-content {
-  padding: 0.7rem;
-  font-size: 0.9rem;
-  width: 85%;
-  max-width: 90%;
-  max-height: 80vh;
-  border-radius: 8px;
+    padding: 0.7rem;
+    font-size: 0.9rem;
+    width: 85%;
+    max-width: 90%;
+    max-height: 80vh;
+    border-radius: 8px;
+  }
 }
+
 
 
   .product-list {
